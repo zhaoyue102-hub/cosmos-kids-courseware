@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>宇宙探索讲稿</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090b24;
+      --panel: rgba(255,255,255,.08);
+      --line: rgba(255,255,255,.14);
+      --text: #f7f9ff;
+      --muted: #b9c3e6;
+      --gold: #ffd166;
+      --cyan: #55d6ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 8%, rgba(85,214,255,.14), transparent 28%),
+        radial-gradient(circle at 82% 10%, rgba(255,209,102,.12), transparent 24%),
+        linear-gradient(180deg, #090b24, #111436 52%, #07091f);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    .shell {
+      width: min(980px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 28px 0 64px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      padding: 18px 0 16px;
+      background: linear-gradient(180deg, rgba(9,11,36,.98), rgba(9,11,36,.86));
+      backdrop-filter: blur(14px);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 48px);
+      letter-spacing: 0;
+      line-height: 1.12;
+    }
+
+    .sub {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    button,
+    a.tool {
+      appearance: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      font: inherit;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    button:active,
+    a.tool:active {
+      transform: translateY(1px);
+    }
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+      gap: 8px;
+      margin: 20px 0 22px;
+    }
+
+    nav a {
+      display: block;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+      text-decoration: none;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    article {
+      display: grid;
+      gap: 18px;
+    }
+
+    section {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      box-shadow: 0 18px 60px rgba(0,0,0,.22);
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-size: clamp(22px, 4vw, 34px);
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(18px, 4.6vw, 26px);
+    }
+
+    strong {
+      color: var(--cyan);
+    }
+
+    .error {
+      padding: 20px;
+      border: 1px solid rgba(255,113,145,.35);
+      border-radius: 18px;
+      color: #ffd6df;
+      background: rgba(255,113,145,.12);
+    }
+
+    @media print {
+      header, nav, .tools { position: static; display: none; }
+      body { color: #111; background: #fff; }
+      section { break-inside: avoid; border-color: #ddd; box-shadow: none; }
+      h2 { color: #111; }
+      p { color: #111; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <h1>宇宙探索讲稿</h1>
+      <p class="sub">给小老师自己看的版本。投屏时请打开 <strong>index.html?audience=1</strong>，这个页面放在手机、平板或不投屏的窗口里。</p>
+      <div class="tools">
+        <button type="button" data-size="up">字大一点</button>
+        <button type="button" data-size="down">字小一点</button>
+        <a class="tool" href="index.html?audience=1#/1">打开投屏版</a>
+      </div>
+    </header>
+    <nav aria-label="讲稿快速跳转">
+      <a href="#note-1">首页</a>
+      <a href="#note-4">第 1 课</a>
+      <a href="#note-10">第 2 课</a>
+      <a href="#note-15">第 3 课</a>
+      <a href="#note-21">第 4 课</a>
+      <a href="#note-24">第 5 课</a>
+      <a href="#note-29">第 6 课</a>
+      <a href="#note-33">复盘</a>
+    </nav>
+    <article id="notes">
+      <section><h2>正在读取讲稿...</h2><p>如果一直停在这里，请通过本地服务器打开本页面。</p></section>
+    </article>
+  </div>
+  <script>
+    (function () {
+      const notesRoot = document.getElementById("notes");
+      const sizeStep = 2;
+      let sizeBoost = Number(localStorage.getItem("teacher-notes-size") || 0);
+
+      function applySize() {
+        document.documentElement.style.setProperty("--note-size-boost", sizeBoost + "px");
+        document.querySelectorAll("article p").forEach((p) => {
+          p.style.fontSize = "calc(clamp(18px, 4.6vw, 26px) + " + sizeBoost + "px)";
+        });
+      }
+
+      function escapeHTML(value) {
+        return value.replace(/[&<>"']/g, (ch) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        }[ch]));
+      }
+
+      function render(markdown) {
+        const blocks = markdown.split(/^## /m).slice(1);
+        notesRoot.innerHTML = blocks.map((block) => {
+          const lines = block.trim().split(/\n+/);
+          const title = lines.shift() || "";
+          const text = lines.join("\n\n").trim();
+          const number = (title.match(/^(\d+)\./) || [null, ""])[1];
+          return '<section id="note-' + number + '">' +
+            "<h2>" + escapeHTML(title) + "</h2>" +
+            "<p>" + escapeHTML(text).replace(/\n\n/g, "</p><p>") + "</p>" +
+          "</section>";
+        }).join("");
+        applySize();
+      }
+
+      fetch("speaker-notes.md", { cache: "no-store" })
+        .then((res) => {
+          if (!res.ok) throw new Error("HTTP " + res.status);
+          return res.text();
+        })
+        .then(render)
+        .catch(() => {
+          notesRoot.innerHTML = '<div class="error">讲稿读取失败。请从本地服务器打开：<br>http://localhost:8765/teacher-notes.html</div>';
+        });
+
+      document.querySelector('[data-size="up"]').addEventListener("click", () => {
+        sizeBoost = Math.min(sizeBoost + sizeStep, 12);
+        localStorage.setItem("teacher-notes-size", sizeBoost);
+        applySize();
+      });
+
+      document.querySelector('[data-size="down"]').addEventListener("click", () => {
+        sizeBoost = Math.max(sizeBoost - sizeStep, -4);
+        localStorage.setItem("teacher-notes-size", sizeBoost);
+        applySize();
+      });
+    })();
+  </script>
+</body>
+</html>
