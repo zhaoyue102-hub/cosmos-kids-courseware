@@ -115,3 +115,4 @@
 - v4.4：修复手机端打开困难问题：视频改为当前页懒加载，离开页面后暂停并释放视频资源；overview 缩略图改为按需生成，避免初始化时克隆 63 页内容和重复加载大视频。同步保留桌面端键盘翻页和演讲者模式。
 - v4.5：继续修复 iOS Safari/Chrome 崩溃问题：所有 `<img>` 改为 `data-src` 懒加载，离开页面后释放隐藏页图片；结尾页 5.6MB 背景图只在该页激活时加载；动画 FX 运行时只加载实际使用的 galaxy-swirl、starfield、constellation 模块，减少首屏请求和内存占用。
 - v4.6：新增 `mobile.html` 作为手机测试/分享入口，内容与轻量加载版 `index.html` 一致，用于绕开 GitHub Pages 根路径和 iOS Safari 对旧崩溃页面的缓存。
+- v4.7：新增 `mobile-lite.html` 极简手机课件入口，保留 63 页标题、正文和讲稿，但不加载桌面 CSS、Canvas、图片、视频和 overview；手机访问根链接会自动跳转到该轻量页，电脑仍打开完整课件。可在 URL 加 `?desktop=1` 强制打开桌面版。

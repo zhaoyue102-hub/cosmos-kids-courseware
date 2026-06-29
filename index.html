@@ -3,6 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>
+    (function () {
+      var isMobile = /iPhone|iPad|iPod|Android|Mobile/i.test(navigator.userAgent);
+      if (isMobile && !/[?&]desktop=1\b/.test(location.search)) {
+        location.replace("mobile-lite.html" + location.search + location.hash);
+      }
+    })();
+  </script>
   <title>湖南支教 · 宇宙探索</title>
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="assets/base.css">
