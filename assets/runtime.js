@@ -136,6 +136,14 @@
 
     /* ===== lazy media ===== */
     function prepareLazyMedia(root) {
+      root.querySelectorAll('img').forEach(img => {
+        if (img.getAttribute('src') && !img.dataset.src) {
+          img.dataset.src = img.getAttribute('src');
+          img.removeAttribute('src');
+        }
+        img.loading = 'lazy';
+        img.decoding = 'async';
+      });
       root.querySelectorAll('video').forEach(video => {
         if (video.getAttribute('src') && !video.dataset.src) {
           video.dataset.src = video.getAttribute('src');
@@ -147,6 +155,11 @@
     }
 
     function activateMedia(slide) {
+      slide.querySelectorAll('img[data-src]').forEach(img => {
+        if (!img.getAttribute('src')) {
+          img.setAttribute('src', img.dataset.src);
+        }
+      });
       slide.querySelectorAll('video[data-src]').forEach(video => {
         if (!video.getAttribute('src')) {
           video.setAttribute('src', video.dataset.src);
@@ -160,6 +173,11 @@
     }
 
     function deactivateMedia(slide) {
+      slide.querySelectorAll('img[data-src]').forEach(img => {
+        if (img.getAttribute('src')) {
+          img.removeAttribute('src');
+        }
+      });
       slide.querySelectorAll('video').forEach(video => {
         try { video.pause(); } catch(e) {}
         if (video.dataset.src && video.getAttribute('src')) {

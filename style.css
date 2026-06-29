@@ -1115,7 +1115,7 @@ h1, h2, h3, p {
   margin-top: 18px;
 }
 
-.cosmos-kids .finale-slide {
+.cosmos-kids .finale-slide.is-active {
   background:
     linear-gradient(90deg, rgba(5, 7, 24, .96) 0%, rgba(8, 10, 31, .78) 34%, rgba(8, 10, 31, .22) 62%, rgba(8, 10, 31, .04) 100%),
     linear-gradient(180deg, rgba(5, 7, 24, .06), rgba(5, 7, 24, .22)),
