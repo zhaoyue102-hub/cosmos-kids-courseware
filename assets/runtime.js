@@ -134,9 +134,49 @@
       document.body.appendChild(notes);
     }
 
+    /* ===== lazy media ===== */
+    function prepareLazyMedia(root) {
+      root.querySelectorAll('video').forEach(video => {
+        if (video.getAttribute('src') && !video.dataset.src) {
+          video.dataset.src = video.getAttribute('src');
+          video.removeAttribute('src');
+        }
+        video.setAttribute('preload', 'none');
+        try { video.load(); } catch(e) {}
+      });
+    }
+
+    function activateMedia(slide) {
+      slide.querySelectorAll('video[data-src]').forEach(video => {
+        if (!video.getAttribute('src')) {
+          video.setAttribute('src', video.dataset.src);
+        }
+        video.setAttribute('preload', 'metadata');
+        if (video.hasAttribute('autoplay')) {
+          const played = video.play();
+          if (played && typeof played.catch === 'function') played.catch(() => {});
+        }
+      });
+    }
+
+    function deactivateMedia(slide) {
+      slide.querySelectorAll('video').forEach(video => {
+        try { video.pause(); } catch(e) {}
+        if (video.dataset.src && video.getAttribute('src')) {
+          video.removeAttribute('src');
+          video.setAttribute('preload', 'none');
+          try { video.load(); } catch(e) {}
+        }
+      });
+    }
+
+    prepareLazyMedia(deck);
+
     /* ===== overview grid (O key) ===== */
     let overview = document.querySelector('.overview');
-    if (!overview) {
+    let overviewBuilt = !!overview;
+    function ensureOverview() {
+      if (overviewBuilt) return;
       overview = document.createElement('div');
       overview.className = 'overview';
       slides.forEach((s, i) => {
@@ -165,6 +205,13 @@
         
         // Clone the slide content
         const clone = s.cloneNode(true);
+        clone.querySelectorAll('video').forEach(video => {
+          const placeholder = document.createElement('div');
+          placeholder.className = 'video-placeholder';
+          placeholder.textContent = 'VIDEO';
+          placeholder.style.cssText = 'display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:rgba(255,255,255,.08);color:#fff;font-weight:700;letter-spacing:.12em;';
+          video.replaceWith(placeholder);
+        });
         clone.className = 'slide is-active'; // force active styles
         clone.style.position = 'absolute';
         clone.style.inset = '0';
@@ -215,6 +262,7 @@
         overview.appendChild(t);
       });
       document.body.appendChild(overview);
+      overviewBuilt = true;
     }
 
     /* ===== navigation ===== */
@@ -223,6 +271,8 @@
       slides.forEach((s,i) => {
         s.classList.toggle('is-active', i===n);
         s.classList.toggle('is-prev', i<n);
+        if (i === n) activateMedia(s);
+        else deactivateMedia(s);
       });
       idx = n;
       barFill.style.width = ((n+1)/total*100)+'%';
@@ -285,6 +335,7 @@
 
     function toggleNotes(force){ notes.classList.toggle('open', force!==undefined?force:!notes.classList.contains('open')); }
     function toggleOverview(force){
+      ensureOverview();
       const isOpen = force!==undefined ? force : !overview.classList.contains('open');
       overview.classList.toggle('open', isOpen);
       if (isOpen) {
