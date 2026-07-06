@@ -288,6 +288,24 @@ h1, h2, h3, p {
   box-shadow: 0 0 18px var(--cyan);
 }
 
+.compact-list {
+  margin-top: 0;
+  gap: 11px;
+}
+
+.compact-list li {
+  padding: 14px 18px 14px 48px;
+  font-size: 20px;
+  line-height: 1.36;
+}
+
+.compact-list li::before {
+  left: 20px;
+  top: 22px;
+  width: 11px;
+  height: 11px;
+}
+
 .orbit-visual,
 .moon-visual,
 .galaxy-visual {
