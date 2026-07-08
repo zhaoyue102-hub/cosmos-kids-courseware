@@ -10,6 +10,7 @@
 - `saturn-nasa.jpg`：NASA Images, A Farewell to Saturn. https://images.nasa.gov/
 - `black-hole-m87-nasa.jpg`：NASA Images, Spitzer Captures Messier 87. https://images.nasa.gov/
 - `hurricane-matthew-nasa-svs.mp4`：NASA Goddard Scientific Visualization Studio, A New Multi-dimensional View of a Hurricane. https://svs.gsfc.nasa.gov/12635/
+- 第 1 课“风暴破坏力”页在线视频：DVIDS, B-Roll: Hurricane Ian damage in Bradenton. https://www.dvidshub.net/video/858954/b-roll-hurricane-ian-damage-bradenton
 
 NASA Space Place 页面注明太阳系图像合集来源包括 NASA/JPL、NASA Goddard、NASA/JHUAPL、USGS 等；NASA Photojournal Galleries 提供来自多个太阳系探索任务的图像、动画与视频。
 
