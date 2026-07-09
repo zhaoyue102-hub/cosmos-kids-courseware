@@ -11,6 +11,7 @@
 - `black-hole-m87-nasa.jpg`：NASA Images, Spitzer Captures Messier 87. https://images.nasa.gov/
 - `hurricane-matthew-nasa-svs.mp4`：NASA Goddard Scientific Visualization Studio, A New Multi-dimensional View of a Hurricane. https://svs.gsfc.nasa.gov/12635/
 - `typhoon-mangkhut-philippines-wind-rain-voa.webm`：Voice of America / Wikimedia Commons, Ferocious Typhoon Barrels Through Rain-Soaked Philippines, 2018，公开领域，本地离线视频。https://commons.wikimedia.org/wiki/File:Ferocious_Typhoon_Barrels_Through_Rain-Soaked_Philippines.webm
+- Typhoon Mangkhut / Ompong 风速：WHO Western Pacific, sustained wind speeds of more than 205 km/h and gusts of 255 km/h. https://www.who.int/westernpacific/emergencies/typhoon-ompong
 - 菲律宾 Typhoon Kalmaegi / Tino 房屋损毁数据：OCHA / ReliefWeb, Typhoon Kalmaegi - Nov 2025. https://reliefweb.int/disaster/tc-2025-000203-phl
 - 木星大红斑风速：NASA, Hubble Shows Winds in Jupiter's Great Red Spot Are Speeding Up. https://science.nasa.gov/missions/hubble/hubble-shows-winds-in-jupiters-great-red-spot-are-speeding-up/
 - 土星赤道风速：NASA, Saturn's Winds. https://science.nasa.gov/resource/saturns-winds/
