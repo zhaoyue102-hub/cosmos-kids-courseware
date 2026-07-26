@@ -1,240 +1,83 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>宇宙探索讲稿</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #090b24;
-      --panel: rgba(255,255,255,.08);
-      --line: rgba(255,255,255,.14);
-      --text: #f7f9ff;
-      --muted: #b9c3e6;
-      --gold: #ffd166;
-      --cyan: #55d6ff;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 18% 8%, rgba(85,214,255,.14), transparent 28%),
-        radial-gradient(circle at 82% 10%, rgba(255,209,102,.12), transparent 24%),
-        linear-gradient(180deg, #090b24, #111436 52%, #07091f);
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Segoe UI", sans-serif;
-      line-height: 1.65;
-    }
-
-    .shell {
-      width: min(980px, calc(100vw - 32px));
-      margin: 0 auto;
-      padding: 28px 0 64px;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      padding: 18px 0 16px;
-      background: linear-gradient(180deg, rgba(9,11,36,.98), rgba(9,11,36,.86));
-      backdrop-filter: blur(14px);
-    }
-
-    h1 {
-      margin: 0 0 8px;
-      font-size: clamp(28px, 5vw, 48px);
-      letter-spacing: 0;
-      line-height: 1.12;
-    }
-
-    .sub {
-      margin: 0;
-      color: var(--muted);
-      font-size: 16px;
-    }
-
-    .tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    button,
-    a.tool {
-      appearance: none;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 10px 14px;
-      color: var(--text);
-      background: rgba(255,255,255,.08);
-      font: inherit;
-      font-weight: 800;
-      text-decoration: none;
-    }
-
-    button:active,
-    a.tool:active {
-      transform: translateY(1px);
-    }
-
-    nav {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
-      gap: 8px;
-      margin: 20px 0 22px;
-    }
-
-    nav a {
-      display: block;
-      padding: 10px 12px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      color: var(--text);
-      background: rgba(255,255,255,.06);
-      text-decoration: none;
-      font-weight: 800;
-      text-align: center;
-    }
-
-    article {
-      display: grid;
-      gap: 18px;
-    }
-
-    section {
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--panel);
-      box-shadow: 0 18px 60px rgba(0,0,0,.22);
-    }
-
-    h2 {
-      margin: 0 0 12px;
-      color: var(--gold);
-      font-size: clamp(22px, 4vw, 34px);
-      line-height: 1.25;
-      letter-spacing: 0;
-    }
-
-    p {
-      margin: 0;
-      color: var(--text);
-      font-size: clamp(18px, 4.6vw, 26px);
-    }
-
-    strong {
-      color: var(--cyan);
-    }
-
-    .error {
-      padding: 20px;
-      border: 1px solid rgba(255,113,145,.35);
-      border-radius: 18px;
-      color: #ffd6df;
-      background: rgba(255,113,145,.12);
-    }
-
-    @media print {
-      header, nav, .tools { position: static; display: none; }
-      body { color: #111; background: #fff; }
-      section { break-inside: avoid; border-color: #ddd; box-shadow: none; }
-      h2 { color: #111; }
-      p { color: #111; font-size: 16px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="shell">
-    <header>
-      <h1>宇宙探索讲稿</h1>
-      <p class="sub">给小老师自己看的版本。投屏时请打开 <strong>index.html?audience=1</strong>，这个页面放在手机、平板或不投屏的窗口里。</p>
-      <div class="tools">
-        <button type="button" data-size="up">字大一点</button>
-        <button type="button" data-size="down">字小一点</button>
-        <a class="tool" href="index.html?audience=1#/1">打开投屏版</a>
-      </div>
-    </header>
-    <nav aria-label="讲稿快速跳转">
-      <a href="#note-1">首页</a>
-      <a href="#note-4">第 1 课</a>
-      <a href="#note-10">第 2 课</a>
-      <a href="#note-15">第 3 课</a>
-      <a href="#note-21">第 4 课</a>
-      <a href="#note-24">第 5 课</a>
-      <a href="#note-29">第 6 课</a>
-      <a href="#note-33">复盘</a>
-    </nav>
-    <article id="notes">
-      <section><h2>正在读取讲稿...</h2><p>如果一直停在这里，请通过本地服务器打开本页面。</p></section>
-    </article>
-  </div>
-  <script>
-    (function () {
-      const notesRoot = document.getElementById("notes");
-      const sizeStep = 2;
-      let sizeBoost = Number(localStorage.getItem("teacher-notes-size") || 0);
-
-      function applySize() {
-        document.documentElement.style.setProperty("--note-size-boost", sizeBoost + "px");
-        document.querySelectorAll("article p").forEach((p) => {
-          p.style.fontSize = "calc(clamp(18px, 4.6vw, 26px) + " + sizeBoost + "px)";
-        });
-      }
-
-      function escapeHTML(value) {
-        return value.replace(/[&<>"']/g, (ch) => ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#39;"
-        }[ch]));
-      }
-
-      function render(markdown) {
-        const blocks = markdown.split(/^## /m).slice(1);
-        notesRoot.innerHTML = blocks.map((block) => {
-          const lines = block.trim().split(/\n+/);
-          const title = lines.shift() || "";
-          const text = lines.join("\n\n").trim();
-          const number = (title.match(/^(\d+)\./) || [null, ""])[1];
-          return '<section id="note-' + number + '">' +
-            "<h2>" + escapeHTML(title) + "</h2>" +
-            "<p>" + escapeHTML(text).replace(/\n\n/g, "</p><p>") + "</p>" +
-          "</section>";
-        }).join("");
-        applySize();
-      }
-
-      fetch("speaker-notes.md", { cache: "no-store" })
-        .then((res) => {
-          if (!res.ok) throw new Error("HTTP " + res.status);
-          return res.text();
-        })
-        .then(render)
-        .catch(() => {
-          notesRoot.innerHTML = '<div class="error">讲稿读取失败。请从本地服务器打开：<br>http://localhost:8765/teacher-notes.html</div>';
-        });
-
-      document.querySelector('[data-size="up"]').addEventListener("click", () => {
-        sizeBoost = Math.min(sizeBoost + sizeStep, 12);
-        localStorage.setItem("teacher-notes-size", sizeBoost);
-        applySize();
-      });
-
-      document.querySelector('[data-size="down"]').addEventListener("click", () => {
-        sizeBoost = Math.max(sizeBoost - sizeStep, -4);
-        localStorage.setItem("teacher-notes-size", sizeBoost);
-        applySize();
-      });
-    })();
-  </script>
-</body>
-</html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>湖南支教宇宙课件讲稿</title><style>body{font-family:-apple-system,BlinkMacSystemFont,"Noto Sans SC",sans-serif;max-width:900px;margin:0 auto;padding:24px;line-height:1.7;background:#fafafa;color:#111}section{background:#fff;border:1px solid #ddd;border-radius:8px;padding:18px;margin:0 0 16px}h1{margin:0 0 20px}h2{font-size:22px;margin:0 0 10px;letter-spacing:0}p{font-size:17px;margin:0;white-space:pre-wrap}</style></head>
+<body><h1>湖南支教宇宙课件讲稿</h1>
+<section id="note-1"><h2>1. 把好奇心 发射到 星空</h2><p>开场：
+大家好，今天我们一起探索宇宙。这里欢迎好奇、猜想和提问，不要求大家一开始就知道答案。</p></section>
+<section id="note-2"><h2>2. 我来分享宇宙故事</h2><p>讲稿：
+大家好，我叫李昱葳，今年 11 岁，在香港读书。今天我想和大家一起看宇宙图片、猜问题、做手工，也很想听见你们的想法。</p></section>
+<section id="note-3"><h2>3. 把名字写在名牌上</h2><p>讲稿：
+发下名牌或便签，请每个人只写自己的名字。提醒大家把字写大、写清楚，完成后把名牌摆在桌角，方便课堂中互相认识和点名互动。</p></section>
+<section id="note-4"><h2>4. 五天，五个宇宙任务</h2><p>讲稿：
+第一课认识太阳和八大行星；第二课玩“你猜我话”并做行星模型；第三课认识月相并做三球仪；第四课认识恒星、黑洞和十二星座，再做星座刮刮画；第五课看人类探索、中国航天和火箭回收。</p></section>
+<section id="note-5"><h2>5. “星星之火”贴纸怎么用？</h2><p>讲稿：
+根据主办方《贴纸使用规则》，课堂表现突出可以获得“星星之火”贴纸。普通款有 7 种颜色，1 张隐藏款等于 10 张普通款；贴纸要保存好，星期五放学后 16:40–17:50 可以在嘉年华兑换礼物，礼物先到先得。教师准备时注意隐藏款数量优先，每位讲师有 2 张隐藏款。</p></section>
+<section id="note-6"><h2>6. 你对宇宙了解有多少？</h2><p>讲稿：
+一次只显示一道题，先让孩子举手回答或猜。讨论结束后点击“揭晓答案”，讲清答案，再点击“下一题”。10 个答案依次是：太阳、太阳、水星、地球、火星、木星、土星、海王星、会、不会；月亮主要反射太阳光。</p></section>
+<section id="note-7"><h2>7. 第 1 课学习目标</h2><p>讲稿：
+第一课只抓三件事：知道太阳是恒星；能用颜色、大小、条纹或光环认出八大行星；能按水金地火、木土天海摆好纸盘行星。</p></section>
+<section id="note-8"><h2>8. 先猜一猜，再寻找证据</h2><p>讲稿：
+鼓励孩子先说猜想，再一起看图片和证据。每讲完一个知识点就问一个短问题；有人没听懂时，可以请已经理解的孩子换一种说法解释。</p></section>
+<section id="note-9"><h2>9. 太阳像一座远方的 能量站</h2><p>讲稿：
+太阳是一颗会自己发光发热的恒星。开水是 100 摄氏度，太阳核心约 1500 万摄氏度，大约是开水的 15 万倍。太阳光到地球约需 8 分钟，所以我们看到的是 8 分钟前出发的阳光。</p></section>
+<section id="note-10"><h2>10. 八大行星，看图找特点</h2><p>讲稿：
+从离太阳最近开始读：水星、金星、地球、火星、木星、土星、天王星、海王星。每颗只记一个明显特点：最近、最热、我们的家、红色、最大、光环、浅青蓝、深蓝大风。</p></section>
+<section id="note-11"><h2>11. 照着参考图摆纸盘行星</h2><p>讲稿：
+这一页同时是顺序参考图和手工任务。先放太阳，再从左到右摆水星、金星、地球、火星、木星、土星、天王星、海王星。摆完后一起检查地球排第三、木星排第五。</p></section>
+<section id="note-12"><h2>12. 你猜我话</h2><p>讲稿：
+抽卡者只能用自己的话描述太阳或某颗行星，不能说答案、不能画画、不能做动作，卡片也不提供文字线索。可以描述颜色、大小、位置、温度、光环或表面特点。</p></section>
+<section id="note-13"><h2>13. 制作八大行星手工</h2><p>讲稿：
+今天的目标是照着真实参考照片完成八大行星模型。重点看颜色和明显特点，再按水金地火、木土天海排好顺序。完成后整理材料并交给老师保存。</p></section>
+<section id="note-14"><h2>14. 照着照片给八大行星涂色</h2><p>讲稿：
+逐张看八大行星：水星灰褐、金星黄白、地球蓝绿、火星红橙、木星有棕白条纹和大红斑、土星淡黄并有大光环、天王星浅青蓝、海王星深蓝。八张图为了看清外形分别放大，不代表真实大小，也不表示真实距离。</p></section>
+<section id="note-15"><h2>15. 第 3 课学习目标</h2><p>讲稿：
+第三课要知道月球是地球的天然卫星，理解月相来自亮面角度变化，认识朔、上弦、望、下弦四个主要月相，并用三球仪说明太阳、地球和月球的关系。</p></section>
+<section id="note-16"><h2>16. 太阳系成员很多</h2><p>讲稿：
+用三个问题认识这些成员：它绕谁转？会不会自己发光？是天然还是人造？月球是天然卫星，小行星像太空石块，彗星靠近太阳时可能出现尾巴，人造卫星由人类发射。</p></section>
+<section id="note-17"><h2>17. 月亮没有变形，是亮面变了</h2><p>讲稿：
+月球始终有一半被太阳照亮，但从地球看过去，亮面大小会变化。按顺序认识四个主要月相：朔几乎看不见，上弦右边亮一半，望又圆又亮，下弦左边亮一半。</p></section>
+<section id="note-18"><h2>18. 做一个太阳地球月球三球仪</h2><p>讲稿：
+用模型表示三者关系：太阳负责照亮，地球绕太阳转，月球绕地球转。提醒孩子标出被太阳照亮的一面，完成后用模型指出谁绕谁转。</p></section>
+<section id="note-19"><h2>19. 今天记住这四件事</h2><p>讲稿：
+快速回顾：月球绕地球；月亮没有自己变形；四个主要月相是朔、上弦、望、下弦；三球仪可以帮助我们看懂太阳、地球和月球的关系。</p></section>
+<section id="note-20"><h2>20. 星座 与黑洞</h2><p>讲稿：
+第四课先认识黑洞，再认识星座是人类从地球视角看到的图案，最后从十二星座中选一个完成刮刮画。</p></section>
+<section id="note-21"><h2>21. 第 4 课学习目标</h2><p>讲稿：
+学完以后，孩子能知道黑洞是引力特别强的天体，知道黑洞不会追着地球跑，理解星座不是真实连线，并能完成一张带名称和日期的星座刮刮画。</p></section>
+<section id="note-22"><h2>22. 黑洞不会追着地球跑</h2><p>讲稿：
+黑洞不是主动追东西的怪兽，它只会强烈影响很近的区域。地球离已知黑洞都非常远，不会突然被吸走；科学家会观察周围的光、气体运动和引力线索来研究黑洞。只用一句话补充来源：有些特别大的恒星，在生命最后阶段可能形成黑洞。</p></section>
+<section id="note-23"><h2>23. 星座图要像夜空地图</h2><p>讲稿：
+先找半透明狮子轮廓，再看星线和亮星“轩辕十四”。提醒孩子：星线是帮助认位置的地图线，星星之间并没有真的拉起一条线。</p></section>
+<section id="note-24"><h2>24. 星星不是自己连上线</h2><p>讲稿：
+星座是人类为了记住天空，从地球角度把星星想象成的图案。同一星座里的星星实际距离可能差很多；请孩子说一个听过的星座，再到下一页点击查看。</p></section>
+<section id="note-25"><h2>25. 说到哪个 12 星座，就点哪个图</h2><p>讲稿：
+孩子说到哪个星座，就点击对应按钮。按钮同时写出常用日期范围；每次只看一个图，问它像什么、哪一部分最好认，并让孩子为下一页刮刮画选一个图案。</p></section>
+<section id="note-26"><h2>26. 星座刮刮画</h2><p>讲稿：
+这一页只告诉大家接下来有一个星座刮刮画手工。发材料后再口头说明怎么刮，不把步骤全部放在投屏上。</p></section>
+<section id="note-27"><h2>27. 人类探索 与课程回顾</h2><p>讲稿：
+第五课看中国人怎样一步步探索天空，认识张衡、钱学森、杨利伟和中国的天宫、玉兔，再理解火箭回收和卫星怎样帮助探索与生活。</p></section>
+<section id="note-28"><h2>28. 第 5 课学习目标</h2><p>讲稿：
+最后一课不背很多人名和年份，只要看懂探索是一场接力，认识中国航天，知道火箭回收为什么困难，并能分享一个记住的知识点和一个新问题。</p></section>
+<section id="note-29"><h2>29. 我们怎样一步步看见更远？</h2><p>讲稿：
+按故事讲：望远镜让天空更清楚，火箭让人离开地球，登月让人踏上另一个天体，太空站让人在太空长期工作。问孩子：如果少了其中一个工具，探索会不会变慢？</p></section>
+<section id="note-30"><h2>30. 探索宇宙，有很多角色</h2><p>讲稿：
+张衡观察日月星辰并制作浑天仪；钱学森帮助建立中国火箭和航天研究队伍，推动航天事业起步；杨利伟是第一位进入太空的中国人。重点不是背年份，而是看见观察、工程和飞行怎样一代代接力。</p></section>
+<section id="note-31"><h2>31. 天宫和玉兔，也在探索太空</h2><p>讲稿：
+天宫空间站像人在太空里的工作房间，宇航员可以在那里生活和做实验。玉兔月球车像在月球上行走的小探测车，帮助拍照、移动和探测。</p></section>
+<section id="note-32"><h2>32. 火箭为什么要学会“飞回来”？</h2><p>讲稿：
+讲中国海上网系回收案例：火箭一级完成任务后，要控制方向和速度，瞄准海上平台中央的大网，再由大网接住。先让孩子从示意图里找出火箭和大网，再强调回收是为检查、改进和未来重复使用做准备。</p></section>
+<section id="note-33"><h2>33. 太空技术，也在帮我们日常生活</h2><p>讲稿：
+不要假设孩子使用过导航，可以从天气预报讲起：卫星从高空看云、暴雨和台风，也能帮助救援定位和远距离通信。问大家：山里连续下大雨时，提前看到云图有什么帮助？</p></section>
+<section id="note-34"><h2>34. 探索太空，也会帮到地球</h2><p>讲稿：
+太空任务会推动相机、材料、净水和灾害监测技术变得更可靠、更轻、更省资源。不要说这些东西全部由航天发明，只说航天任务推动了技术改进。</p></section>
+<section id="note-35"><h2>35. 五天宇宙快问快答</h2><p>讲稿：
+像第一课一样一次只显示一道题。先请孩子举手回答或猜，再点击“揭晓答案”，最后进入下一题。六个答案依次是：恒星、木星、地球、钱学森、杨利伟、海上平台中央的大网。</p></section>
+<section id="note-36"><h2>36. 奖励时间</h2><p>讲稿：
+快速问答结束后发放随堂小礼物和“星星之火”贴纸。奖励不只看答对，还要看是否认真回答、提出有效问题、遵守纪律和认真合作。</p></section>
+<section id="note-37"><h2>37. 带走一个知识点，一个新问题</h2><p>讲稿：
+每个人只说一句：一个最想记住的知识点和一个还想继续问的问题。不要把这一页变成长篇复习，让孩子带着真正的好奇结束课程。</p></section>
+<section id="note-38"><h2>38. 五天课程回顾 + 反馈</h2><p>讲稿：
+按三条主线回顾：太阳与八大行星；月球、月相、黑洞和星座刮刮画；人物、中国航天、火箭回收和卫星应用。最后用红、黄、绿三种颜色表达听懂程度和兴趣。</p></section>
+<section id="note-39"><h2>39. 愿你的问题 继续 发光</h2><p>结束语：
+谢谢大家一起探索宇宙。以后看到太阳、月亮和星空，希望你们会继续观察、继续提问；能把一个新问题带回去思考，就是这五天最重要的收获。</p></section>
+</body></html>

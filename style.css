@@ -197,6 +197,7 @@ h1, h2, h3, p {
 .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.g5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 
 .panel,
 .card,
@@ -255,6 +256,121 @@ h1, h2, h3, p {
 .g4 .card p {
   font-size: 19px;
   line-height: 1.4;
+}
+
+.question-row .question {
+  min-height: 210px;
+  padding: 20px;
+}
+
+.question-row .question h3 {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--space-0);
+  background: var(--gold);
+  margin-bottom: 16px;
+}
+
+.question-row .question p {
+  font-size: 21px;
+  line-height: 1.36;
+}
+
+.slide-number {
+  display: none !important;
+}
+
+.quiz-stage {
+  min-height: 470px;
+  margin-top: 22px;
+  display: grid;
+  grid-template-rows: minmax(240px, 1fr) 92px 58px;
+  gap: 16px;
+}
+
+.quiz-question {
+  display: none;
+  place-items: center;
+  align-content: center;
+  min-height: 240px;
+  padding: 44px;
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.quiz-question.is-active {
+  display: grid;
+}
+
+.quiz-label {
+  margin: 0 0 18px;
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.quiz-question h3 {
+  max-width: 1100px;
+  margin: 0;
+  color: var(--ink);
+  font-size: 48px;
+  line-height: 1.24;
+}
+
+.quiz-answer {
+  display: grid;
+  place-items: center;
+  min-height: 92px;
+  padding: 18px 28px;
+  color: transparent;
+  background: rgba(126, 240, 193, .08);
+  border: 1px solid rgba(126, 240, 193, .22);
+  border-radius: var(--radius);
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.quiz-answer.is-revealed {
+  color: var(--mint);
+  background: rgba(126, 240, 193, .14);
+}
+
+.quiz-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.quiz-btn {
+  min-width: 170px;
+  min-height: 54px;
+  padding: 10px 22px;
+  color: var(--ink);
+  background: rgba(255,255,255,.09);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.quiz-btn.primary {
+  color: var(--space-0);
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.quiz-btn:hover,
+.quiz-btn:focus-visible {
+  filter: brightness(1.12);
 }
 
 .big-list {
@@ -352,6 +468,48 @@ h1, h2, h3, p {
     #02030a;
 }
 
+.sticker-rules-grid {
+  height: 510px;
+  margin-top: 18px;
+}
+
+.sticker-rules-grid .photo-frame,
+.sticker-rules-grid .panel {
+  min-height: 0;
+  height: 510px;
+}
+
+.sticker-rules-grid .photo-frame img {
+  min-height: 0;
+}
+
+.rocket-recovery-photo {
+  min-height: 448px;
+  background: #071126;
+}
+
+.rocket-recovery-photo img {
+  min-height: 448px;
+  object-fit: cover;
+  object-position: center center;
+  padding: 0;
+  background: transparent;
+}
+
+.photo-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #101526;
+  background: linear-gradient(135deg, var(--gold), #fff0a8);
+  font-size: 17px;
+  font-weight: 950;
+  box-shadow: 0 10px 28px rgba(0,0,0,.22);
+}
+
 .photo-frame::after {
   content: "";
   position: absolute;
@@ -427,7 +585,7 @@ h1, h2, h3, p {
 
 .planet-showcase {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: .9fr 1.35fr;
   gap: 22px;
   align-items: stretch;
   margin-top: 22px;
@@ -454,6 +612,775 @@ h1, h2, h3, p {
 
 .mini-planets .planet p {
   font-size: 18px;
+}
+
+.compact-planets {
+  gap: 10px;
+}
+
+.compact-planets .planet {
+  min-height: 104px;
+  padding: 14px;
+}
+
+.compact-planets .planet h3 {
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.compact-planets .planet p {
+  font-size: 17px;
+  line-height: 1.24;
+}
+
+.craft-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.craft-reference-card {
+  min-height: 245px;
+  margin: 0;
+  display: grid;
+  grid-template-rows: 172px auto;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.craft-reference-card img {
+  width: 100%;
+  height: 172px;
+  padding: 8px;
+  object-fit: contain;
+  background: #02030a;
+}
+
+.craft-reference-card figcaption {
+  display: grid;
+  align-content: center;
+  gap: 4px;
+  min-height: 70px;
+  padding: 10px 14px;
+}
+
+.craft-reference-card figcaption b {
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.craft-reference-card figcaption span {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.planet-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.planet-detail-card {
+  margin: 0;
+  min-height: 555px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: var(--shadow);
+}
+
+.planet-detail-card img {
+  width: 100%;
+  height: 410px;
+  display: block;
+  object-fit: contain;
+  background: #02030a;
+}
+
+.planet-detail-card.wide img {
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.planet-detail-card figcaption {
+  min-height: 118px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 18px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.35;
+  background: rgba(9, 12, 36, .78);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.planet-detail-card figcaption b {
+  color: var(--ink);
+  font-size: 25px;
+}
+
+.planet-detail-card.warm figcaption b { color: #ffd166; }
+.planet-detail-card.mars-tone figcaption b { color: #ff9b7a; }
+.planet-detail-card.cyan figcaption b { color: #7ef0c1; }
+.planet-detail-card.blue figcaption b { color: #7aa8ff; }
+
+.giant-detail-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.giant-detail-grid .planet-detail-card {
+  min-height: 250px;
+  grid-template-columns: 1.45fr .75fr;
+  grid-template-rows: none;
+}
+
+.giant-detail-grid .planet-detail-card img {
+  height: 250px;
+}
+
+.giant-detail-grid .planet-detail-card figcaption {
+  min-height: 0;
+  align-content: center;
+  border-top: 0;
+  border-left: 1px solid rgba(255,255,255,.12);
+}
+
+.galaxy-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.galaxy-photo-card {
+  margin: 0;
+  min-height: 505px;
+  display: grid;
+  grid-template-rows: 330px auto;
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: var(--shadow);
+}
+
+.galaxy-photo-card img {
+  width: 100%;
+  height: 330px;
+  display: block;
+  object-fit: cover;
+  background: #02030a;
+  filter: saturate(1.08) contrast(1.06);
+}
+
+.galaxy-photo-card img.fit-wide {
+  object-fit: contain;
+  padding: 14px;
+  box-sizing: border-box;
+}
+
+.galaxy-photo-card figcaption {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  min-height: 154px;
+  padding: 16px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.32;
+  background: rgba(9, 12, 36, .78);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.galaxy-photo-card figcaption b {
+  color: var(--ink);
+  font-size: 23px;
+}
+
+.galaxy-photo-card figcaption strong {
+  color: var(--gold);
+  font-size: 19px;
+}
+
+.orbit-order-diagram {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 22px;
+  align-items: stretch;
+  margin-top: 24px;
+}
+
+.order-sun {
+  min-height: 450px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 14px;
+  border-radius: 32px;
+  color: #221300;
+  background:
+    radial-gradient(circle at 50% 42%, #fff3a3 0 18%, #ffd166 31%, #ff8d25 58%, rgba(255,141,37,.18) 72%, transparent 73%),
+    rgba(255, 209, 102, .12);
+  border: 1px solid rgba(255,209,102,.55);
+  box-shadow: 0 0 54px rgba(255, 141, 37, .38);
+}
+
+.order-sun b {
+  margin-top: 68px;
+  color: #1a1000;
+  font-size: 40px;
+  font-weight: 950;
+}
+
+.order-sun span {
+  color: rgba(34, 19, 0, .82);
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.order-path {
+  min-height: 450px;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: center;
+  gap: 10px;
+  padding: 26px 18px;
+  border-radius: 32px;
+  background:
+    linear-gradient(90deg, rgba(255,209,102,.22), rgba(85,214,255,.08)),
+    repeating-linear-gradient(90deg, transparent 0 11.7%, rgba(255,255,255,.12) 11.7% 12%, transparent 12% 12.5%),
+    rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.orbit-step {
+  position: relative;
+  min-height: 340px;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 8px;
+  border-radius: 24px;
+  background: rgba(6, 8, 25, .54);
+  border: 1px solid rgba(255,255,255,.13);
+}
+
+.orbit-step b {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--space-0);
+  background: var(--gold);
+  font-size: 19px;
+  font-weight: 950;
+}
+
+.orbit-step::before {
+  content: "";
+  width: var(--planet-size, 48px);
+  height: var(--planet-size, 48px);
+  border-radius: 50%;
+  background: var(--planet-color, var(--cyan));
+  box-shadow: 0 0 24px var(--planet-glow, rgba(85,214,255,.5));
+}
+
+.orbit-step span {
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.orbit-step em {
+  color: var(--muted);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  text-align: center;
+}
+
+.orbit-step.mercury { --planet-size: 30px; --planet-color: #b8b0a4; --planet-glow: rgba(184,176,164,.5); }
+.orbit-step.venus { --planet-size: 44px; --planet-color: #f1c27d; --planet-glow: rgba(241,194,125,.55); }
+.orbit-step.earth { --planet-size: 46px; --planet-color: linear-gradient(135deg, #55d6ff, #2f7eea 55%, #7ef0c1); --planet-glow: rgba(85,214,255,.55); }
+.orbit-step.mars { --planet-size: 38px; --planet-color: #ff7a5c; --planet-glow: rgba(255,122,92,.55); }
+.orbit-step.jupiter { --planet-size: 82px; --planet-color: linear-gradient(180deg, #f2d0a5, #b9824b 45%, #fff1c0 55%, #a7653d); --planet-glow: rgba(214,166,106,.5); }
+.orbit-step.saturn { --planet-size: 72px; --planet-color: #ffd166; --planet-glow: rgba(255,209,102,.45); }
+.orbit-step.uranus { --planet-size: 58px; --planet-color: #7ef0c1; --planet-glow: rgba(126,240,193,.48); }
+.orbit-step.neptune { --planet-size: 56px; --planet-color: #7aa8ff; --planet-glow: rgba(122,168,255,.5); }
+
+.orbit-step.saturn::after {
+  content: "";
+  position: absolute;
+  top: 142px;
+  left: 50%;
+  width: 92px;
+  height: 24px;
+  border: 4px solid rgba(255, 238, 175, .68);
+  border-left-color: rgba(255, 238, 175, .24);
+  border-right-color: rgba(255, 238, 175, .9);
+  border-radius: 50%;
+  transform: translateX(-50%) rotate(-12deg);
+  box-shadow: 0 0 14px rgba(255, 209, 102, .28);
+}
+
+.craft-order-board {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 18px;
+  align-items: stretch;
+  margin-top: 18px;
+}
+
+.craft-sun-ref {
+  min-height: 430px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  border-radius: 28px;
+  color: #241400;
+  background:
+    radial-gradient(circle at 50% 38%, #fff6b8 0 15%, #ffd166 30%, #ff8d25 55%, rgba(255,141,37,.2) 72%, transparent 73%),
+    rgba(255, 209, 102, .12);
+  border: 1px solid rgba(255,209,102,.62);
+  box-shadow: 0 0 52px rgba(255, 141, 37, .38);
+}
+
+.craft-sun-ref span {
+  min-width: 74px;
+  padding: 6px 12px;
+  text-align: center;
+  color: #3c2300;
+  font-size: 20px;
+  font-weight: 950;
+  border-radius: 999px;
+  background: rgba(255,255,255,.46);
+}
+
+.craft-sun-ref b {
+  margin-top: 68px;
+  color: #1a1000;
+  font-size: 46px;
+  font-weight: 950;
+}
+
+.craft-sun-ref em {
+  color: rgba(34, 19, 0, .82);
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 900;
+}
+
+.craft-order-rail {
+  position: relative;
+  min-height: 430px;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 10px;
+  padding: 20px 14px;
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    linear-gradient(90deg, rgba(255,209,102,.2), rgba(85,214,255,.1)),
+    rgba(255,255,255,.045);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.craft-order-rail::before {
+  content: "";
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  top: 48%;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,209,102,.72), rgba(85,214,255,.78));
+  box-shadow: 0 0 18px rgba(85,214,255,.34);
+}
+
+.craft-planet {
+  position: relative;
+  z-index: 1;
+  min-height: 390px;
+  display: grid;
+  grid-template-rows: 34px 1fr auto auto;
+  justify-items: center;
+  align-items: center;
+  gap: 9px;
+  padding: 14px 6px;
+  border-radius: 22px;
+  background: rgba(6, 8, 25, .62);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.craft-planet b {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--space-0);
+  background: var(--gold);
+  font-size: 19px;
+  font-weight: 950;
+}
+
+.craft-planet i {
+  position: relative;
+  width: var(--planet-size, 48px);
+  height: var(--planet-size, 48px);
+  display: block;
+  border-radius: 50%;
+  background: var(--planet-color, var(--cyan));
+  box-shadow: 0 0 26px var(--planet-glow, rgba(85,214,255,.5));
+}
+
+.craft-planet span {
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 950;
+  text-align: center;
+}
+
+.craft-planet em {
+  min-height: 40px;
+  color: var(--muted);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 850;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.craft-planet.mercury { --planet-size: 30px; --planet-color: #b8b0a4; --planet-glow: rgba(184,176,164,.5); }
+.craft-planet.venus { --planet-size: 44px; --planet-color: #f1c27d; --planet-glow: rgba(241,194,125,.55); }
+.craft-planet.earth { --planet-size: 46px; --planet-color: linear-gradient(135deg, #55d6ff, #2f7eea 55%, #7ef0c1); --planet-glow: rgba(85,214,255,.55); }
+.craft-planet.mars { --planet-size: 38px; --planet-color: #ff7a5c; --planet-glow: rgba(255,122,92,.55); }
+.craft-planet.jupiter { --planet-size: 84px; --planet-color: linear-gradient(180deg, #f2d0a5, #b9824b 45%, #fff1c0 55%, #a7653d); --planet-glow: rgba(214,166,106,.5); }
+.craft-planet.saturn { --planet-size: 72px; --planet-color: #ffd166; --planet-glow: rgba(255,209,102,.45); }
+.craft-planet.uranus { --planet-size: 58px; --planet-color: #7ef0c1; --planet-glow: rgba(126,240,193,.48); }
+.craft-planet.neptune { --planet-size: 56px; --planet-color: #7aa8ff; --planet-glow: rgba(122,168,255,.5); }
+
+.craft-planet.saturn i::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 96px;
+  height: 24px;
+  border: 4px solid rgba(255, 238, 175, .72);
+  border-left-color: rgba(255, 238, 175, .24);
+  border-right-color: rgba(255, 238, 175, .94);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  box-shadow: 0 0 14px rgba(255, 209, 102, .3);
+}
+
+.person-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.person-card {
+  position: relative;
+  margin: 0;
+  min-height: 405px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.person-card img {
+  width: 100%;
+  height: 300px;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(1.04) contrast(1.04);
+}
+
+.person-card img.qian-portrait {
+  transform: scale(1.9);
+  transform-origin: 38% 46%;
+}
+
+.person-photo-label {
+  position: absolute;
+  top: 184px;
+  left: 16px;
+  right: 16px;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: var(--ink);
+  background: rgba(5, 8, 28, .86);
+  border: 1px solid rgba(255, 255, 255, .18);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .34);
+}
+
+.person-photo-label b {
+  color: var(--gold);
+  font-size: 24px;
+}
+
+.person-photo-label span {
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.person-card figcaption {
+  display: grid;
+  gap: 6px;
+  padding: 14px 18px 16px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.32;
+}
+
+.person-card figcaption b {
+  color: var(--ink);
+  font-size: 23px;
+}
+
+.stacked-media {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  height: 490px;
+}
+
+.stacked-media .photo-frame {
+  min-height: 0;
+  height: 237px;
+  border-radius: 24px;
+}
+
+.stacked-media .photo-frame img {
+  min-height: 0;
+}
+
+.constellation-art {
+  min-height: 430px;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: inset 0 0 90px rgba(85,214,255,.08), var(--shadow);
+  background: #02030a;
+}
+
+.constellation-art svg {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  display: block;
+}
+
+.constellation-art text {
+  fill: var(--ink);
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.sky-map-art {
+  background: #27379d;
+}
+
+.generated-sky-map {
+  position: relative;
+}
+
+.generated-sky-map img {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  display: block;
+  object-fit: cover;
+}
+
+.map-label {
+  position: absolute;
+  z-index: 2;
+  color: rgba(248,251,255,.94);
+  font-size: 30px;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-shadow: 0 0 18px rgba(23, 34, 126, .92), 0 0 8px rgba(255,255,255,.28);
+  pointer-events: none;
+}
+
+.map-label-sun {
+  top: 22%;
+  right: 16%;
+  color: rgba(255, 209, 102, .96);
+}
+
+.map-label-cancer {
+  top: 43%;
+  right: 16%;
+}
+
+.map-label-leo {
+  left: 31%;
+  top: 56%;
+  font-size: 36px;
+}
+
+.map-label-regulus {
+  left: 52%;
+  top: 61%;
+  color: rgba(255, 209, 102, .98);
+}
+
+.sky-map-svg .sky-map-bg {
+  fill: url(#skyMapBg);
+}
+
+.sky-map-svg .sky-map-sun-glow {
+  fill: url(#skySunGlow);
+}
+
+.sky-map-stars circle {
+  fill: rgba(255,255,255,.9);
+  filter: drop-shadow(0 0 8px rgba(255,255,255,.86));
+}
+
+.sky-map-ecliptic {
+  fill: none;
+  stroke: rgba(255, 209, 102, .72);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 22 18;
+  filter: drop-shadow(0 0 8px rgba(255,209,102,.28));
+}
+
+.sky-map-sun {
+  fill: #fffefa;
+  stroke: rgba(255, 173, 196, .75);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 24px rgba(255,255,255,.96));
+}
+
+.sky-map-svg .sky-map-label {
+  fill: rgba(248,251,255,.92);
+  font-size: 30px;
+  font-weight: 900;
+  text-shadow: 0 0 14px rgba(255,255,255,.3);
+}
+
+.sky-map-svg .sky-map-label.soft {
+  fill: rgba(214,225,255,.28);
+}
+
+.sky-map-svg .sky-map-label.warm,
+.sky-map-svg .sky-map-label.star-name {
+  fill: rgba(255, 209, 102, .92);
+}
+
+.sky-map-svg .sky-map-label.faint {
+  fill: rgba(214,225,255,.18);
+}
+
+.sky-map-svg .sky-map-label.title {
+  fill: #fff;
+  font-size: 36px;
+}
+
+.sky-map-leo .leo-poly {
+  fill: rgba(151, 181, 255, .34);
+  stroke: rgba(209, 224, 255, .2);
+  stroke-width: 1.5;
+}
+
+.sky-map-leo .leo-p2,
+.sky-map-leo .leo-p5 {
+  fill: rgba(128, 161, 238, .42);
+}
+
+.sky-map-leo .leo-p3,
+.sky-map-leo .leo-p4 {
+  fill: rgba(185, 207, 255, .3);
+}
+
+.sky-map-leo .leo-tail,
+.sky-map-leo .leo-mane,
+.sky-map-leo .leo-leg {
+  fill: none;
+  stroke: rgba(193, 216, 255, .48);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 10px rgba(177, 204, 255, .26));
+}
+
+.sky-map-constellation polyline {
+  fill: none;
+  stroke: rgba(232, 244, 255, .74);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 10px rgba(255,255,255,.4));
+}
+
+.sky-map-constellation circle {
+  fill: #fff;
+  stroke: rgba(121, 196, 255, .8);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 14px rgba(255,255,255,.95));
+}
+
+.archer-body {
+  fill: rgba(255, 209, 102, .22);
+  stroke: rgba(255, 209, 102, .88);
+  stroke-width: 4;
+}
+
+.archer-bow,
+.archer-arrow,
+.archer-stars-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.archer-bow {
+  stroke: rgba(255, 122, 182, .9);
+  stroke-width: 8;
+}
+
+.archer-arrow {
+  stroke: rgba(126, 240, 193, .94);
+  stroke-width: 6;
+}
+
+.archer-stars-line {
+  stroke: rgba(85, 214, 255, .82);
+  stroke-width: 4;
+  stroke-dasharray: 10 10;
+}
+
+.archer-stars circle {
+  fill: var(--ink);
+  filter: drop-shadow(0 0 12px rgba(85, 214, 255, .9));
 }
 
 .real-orbit {
@@ -546,7 +1473,7 @@ h1, h2, h3, p {
 }
 
 .mission-map.toc-style {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -786,7 +1713,7 @@ h1, h2, h3, p {
 
 .evidence-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 12px;
   margin-top: 18px;
 }
@@ -1044,16 +1971,26 @@ h1, h2, h3, p {
 }
 
 .constellation-btn {
-  min-height: 54px;
+  min-height: 66px;
   padding: 8px 12px;
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,.18);
   background: rgba(255,255,255,.08);
   color: var(--ink);
-  font-size: 20px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 2px;
+  font-size: 19px;
   font-weight: 900;
   text-align: center;
   cursor: pointer;
+}
+
+.constellation-btn small {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .constellation-btn.is-active,
@@ -1061,6 +1998,11 @@ h1, h2, h3, p {
   color: #101526;
   background: linear-gradient(135deg, var(--gold), #fff0a8);
   box-shadow: 0 18px 44px rgba(255,209,102,.22);
+}
+
+.constellation-btn.is-active small,
+.constellation-btn:hover small {
+  color: rgba(16, 21, 38, .72);
 }
 
 .constellation-stage {
@@ -1090,8 +2032,58 @@ h1, h2, h3, p {
   height: 100%;
 }
 
+.constellation-card svg {
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255,255,255,.16), transparent 4px),
+    radial-gradient(circle at 72% 38%, rgba(255,255,255,.14), transparent 3px),
+    radial-gradient(circle at 18% 72%, rgba(255,255,255,.18), transparent 4px),
+    linear-gradient(155deg, #6277e4 0%, #3348b7 54%, #1e2b88 100%);
+}
+
 .constellation-card rect {
-  fill: rgba(6, 9, 31, .88);
+  fill: rgba(60, 82, 190, .72);
+}
+
+.zodiac-figure .figure-fill {
+  fill: rgba(169, 194, 255, .26);
+  stroke: rgba(218, 231, 255, .42);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 14px rgba(130, 165, 255, .28));
+}
+
+.constellation-card .zodiac-figure,
+.constellation-card polyline,
+.constellation-card circle {
+  transform: scale(1.28);
+  transform-origin: 320px 180px;
+}
+
+.zodiac-figure .figure-line {
+  fill: none;
+  stroke: rgba(222, 234, 255, .64);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 12px rgba(255,255,255,.24));
+}
+
+.zodiac-figure .figure-water {
+  fill: none;
+  stroke: rgba(179, 209, 255, .74);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 14px rgba(179,209,255,.35));
+}
+
+.zodiac-figure .figure-dot {
+  fill: #f8fbff;
+  stroke: rgba(255, 209, 102, .9);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 12px rgba(255, 209, 102, .72));
 }
 
 .constellation-card polyline {
@@ -1129,13 +2121,48 @@ h1, h2, h3, p {
   font-size: 22px;
 }
 
-.constellation-card .zodiac-glyph {
-  fill: rgba(255, 209, 102, .18);
-  stroke: rgba(255, 209, 102, .38);
-  stroke-width: 1;
-  font-size: 92px;
-  font-weight: 900;
+.constellation-card.is-active {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, .92fr);
+  grid-template-rows: 1fr;
+  align-items: stretch;
 }
+
+.constellation-card::before {
+  content: "";
+  width: 330px;
+  height: 330px;
+  align-self: center;
+  justify-self: center;
+  border-radius: 20px;
+  background-image: url("assets/media/zodiac-atlas-starmap-generated.png");
+  background-repeat: no-repeat;
+  background-size: 400% 300%;
+  box-shadow: inset 0 0 40px rgba(7, 10, 44, .25), 0 18px 44px rgba(0, 0, 0, .26);
+}
+
+.constellation-card svg {
+  display: none;
+}
+
+.constellation-card figcaption {
+  display: grid;
+  align-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.constellation-card[data-constellation-panel="aries"]::before { background-position: 0% 0%; }
+.constellation-card[data-constellation-panel="taurus"]::before { background-position: 33.333% 0%; }
+.constellation-card[data-constellation-panel="gemini"]::before { background-position: 66.667% 0%; }
+.constellation-card[data-constellation-panel="cancer"]::before { background-position: 100% 0%; }
+.constellation-card[data-constellation-panel="leo"]::before { background-position: 0% 50%; }
+.constellation-card[data-constellation-panel="virgo"]::before { background-position: 33.333% 50%; }
+.constellation-card[data-constellation-panel="libra"]::before { background-position: 66.667% 50%; }
+.constellation-card[data-constellation-panel="scorpius"]::before { background-position: 100% 50%; }
+.constellation-card[data-constellation-panel="sagittarius"]::before { background-position: 0% 100%; }
+.constellation-card[data-constellation-panel="capricorn"]::before { background-position: 33.333% 100%; }
+.constellation-card[data-constellation-panel="aquarius"]::before { background-position: 66.667% 100%; }
+.constellation-card[data-constellation-panel="pisces"]::before { background-position: 100% 100%; }
 
 .constellation-link {
   margin-top: 18px;
@@ -1321,8 +2348,11 @@ h1, h2, h3, p {
   .h1 { font-size: 54px; }
   .h2 { font-size: 40px; }
   .lede { font-size: 21px; }
-  .g2, .g3, .g4, .mission-map, .planets, .data-grid, .phase-strip, .review-grid, .feedback { grid-template-columns: 1fr; }
+  .g2, .g3, .g4, .mission-map, .planets, .data-grid, .phase-strip, .review-grid, .feedback, .galaxy-photo-grid, .craft-order-board, .craft-order-rail, .craft-reference-grid { grid-template-columns: 1fr; }
   .mission-map.toc-style, .timeline.cosmic-timeline { grid-template-columns: 1fr; }
+  .craft-sun-ref { min-height: 260px; }
+  .craft-order-rail { min-height: 0; }
+  .craft-planet { min-height: 230px; }
   .deck-footer { left: 26px; right: 26px; }
   .quick-nav { right: 18px; bottom: 18px; }
   .quick-nav-menu { width: 230px; }
