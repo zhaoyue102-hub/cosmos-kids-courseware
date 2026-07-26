@@ -13,7 +13,7 @@
 - `galaxy-whirlpool-m51-nasa-hubble.webp`：NASA Hubble Messier 51，涡状星系，距离约 3100 万光年。https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-51/
 - `galaxy-sombrero-m104-nasa-hubble.webp`：NASA Hubble Messier 104，草帽星系，距离约 2800 万光年。https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-104/
 - `galaxy-cartwheel-nasa-webb.png`：NASA Webb，车轮星系，距离约 5 亿光年。https://science.nasa.gov/missions/webb/webb-captures-stellar-gymnastics-in-the-cartwheel-galaxy/
-- `leo-constellation-sky-map-generated.png`：根据用户提供的星图参考生成的本地原创教学图片，用于狮子座星图示例；中文标签由 HTML 单独叠加。
+- `leo-constellation-sky-map-generated.jpg`：根据用户提供的星图参考生成的本地原创教学图片，用于狮子座星图示例；中文标签由 HTML 单独叠加。
 - `zodiac-atlas-starmap-generated.png`：以狮子座星图为风格参考生成的本地原创十二星座图谱，使用统一的深蓝星空、半透明低多边形形象、星点和星线；名称与日期由 HTML 单独显示。
 - `jupiter-nasa.jpg`：NASA Images, Jupiter: A New Point of View. https://images.nasa.gov/
 - `saturn-nasa.jpg`：NASA Images, A Farewell to Saturn. https://images.nasa.gov/
@@ -26,7 +26,7 @@
 - `tiangong-space-station-wikimedia.jpg`：Wikimedia Commons, Chinese Tiangong Space Station.jpg。https://commons.wikimedia.org/wiki/File:Chinese_Tiangong_Space_Station.jpg
 - `yutu-rover-wikimedia.jpg`：Wikimedia Commons, Yutu rover.jpg。https://commons.wikimedia.org/wiki/File:Yutu_rover.jpg
 - `linghangzhe-rocket-recovery-platform-xinhua.jpg`：新华社，图为“领航者”火箭网系回收海上平台，中国航天科技集团一院供图。https://www.news.cn/20251201/594fb6cc7c7e4a3c994ce23e1f8e0607/c.html
-- `rocket-net-recovery-generated.png`：参考“领航者”海上平台结构生成的本地原创教学示意图，突出垂直下降的火箭一级和平台中央回收大网；用于帮助孩子看懂网系回收过程，不作为真实现场照片。
+- `rocket-net-recovery-generated.jpg`：参考“领航者”海上平台结构生成的本地原创教学示意图，突出垂直下降的火箭一级和平台中央回收大网；用于帮助孩子看懂网系回收过程，不作为真实现场照片。
 - `star-fire-sticker-colors.jpeg`：用户提供的《贴纸使用规则.pptx》中的“星星之火”七种颜色贴纸与隐藏款示意图，用于第 1 课奖励规则页。
 - 长征十号乙海上网系回收案例：国家航天局，2026 年 7 月 10 日长征十号乙完成我国首次运载火箭一级可控回收、全球首次运载火箭海上网系回收。https://www.cnsa.gov.cn/n6758823/n6758838/c10761540/content.html
 - `hurricane-matthew-nasa-svs.mp4`：NASA Goddard Scientific Visualization Studio, A New Multi-dimensional View of a Hurricane. https://svs.gsfc.nasa.gov/12635/

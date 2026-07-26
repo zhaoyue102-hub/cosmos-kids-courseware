@@ -48,12 +48,23 @@
 
     /* ===== Preview-only mode: show one slide, hide everything else ===== */
     if (isPreviewMode) {
+      function activatePreviewMedia(slide) {
+        slide.querySelectorAll('img[data-src]').forEach(img => {
+          if (!img.getAttribute('src')) img.setAttribute('src', img.dataset.src);
+        });
+        slide.querySelectorAll('video[data-src]').forEach(video => {
+          if (!video.getAttribute('src')) video.setAttribute('src', video.dataset.src);
+          video.setAttribute('preload', 'metadata');
+        });
+      }
+
       function showSlide(i) {
         slides.forEach((s, j) => {
           const active = (j === i);
           s.classList.toggle('is-active', active);
           s.style.display = active ? '' : 'none';
           if (active) {
+            activatePreviewMedia(s);
             s.style.opacity = '1';
             s.style.transform = 'none';
             s.style.pointerEvents = 'auto';

@@ -1118,13 +1118,14 @@ h1, h2, h3, p {
 }
 
 .person-card img.qian-portrait {
+  height: 405px;
   transform: scale(1.9);
   transform-origin: 38% 46%;
 }
 
 .person-photo-label {
   position: absolute;
-  top: 184px;
+  bottom: 16px;
   left: 16px;
   right: 16px;
   z-index: 2;
