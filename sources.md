@@ -14,7 +14,7 @@
 - `galaxy-sombrero-m104-nasa-hubble.webp`：NASA Hubble Messier 104，草帽星系，距离约 2800 万光年。https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-104/
 - `galaxy-cartwheel-nasa-webb.png`：NASA Webb，车轮星系，距离约 5 亿光年。https://science.nasa.gov/missions/webb/webb-captures-stellar-gymnastics-in-the-cartwheel-galaxy/
 - `leo-constellation-sky-map-generated.jpg`：根据用户提供的星图参考生成的本地原创教学图片，用于狮子座星图示例；中文标签由 HTML 单独叠加。
-- `zodiac-atlas-starmap-generated.png`：以狮子座星图为风格参考生成的本地原创十二星座图谱，使用统一的深蓝星空、半透明低多边形形象、星点和星线；名称与日期由 HTML 单独显示。
+- `zodiac-atlas-starmap-generated.jpg`：以狮子座星图为风格参考生成的本地原创十二星座图谱，使用统一的深蓝星空、半透明低多边形形象、星点和星线；名称与日期由 HTML 单独显示。
 - `jupiter-nasa.jpg`：NASA Images, Jupiter: A New Point of View. https://images.nasa.gov/
 - `saturn-nasa.jpg`：NASA Images, A Farewell to Saturn. https://images.nasa.gov/
 - `uranus-nasa-pia18182.jpg`：NASA Image and Video Library, PIA18182, Uranus as seen by NASA Voyager 2. https://images.nasa.gov/details/PIA18182
