@@ -1218,6 +1218,19 @@ h1, h2, h3, p {
   object-fit: cover;
 }
 
+.constellation-fx-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: .55;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.constellation-fx-overlay canvas {
+  filter: drop-shadow(0 0 5px rgba(85, 214, 255, .78));
+}
+
 .map-label {
   position: absolute;
   z-index: 2;
