@@ -6,7 +6,9 @@
   <script>
     (function () {
       var isMobile = /iPhone|iPad|iPod|Android|Mobile/i.test(navigator.userAgent);
-      if (isMobile && !/[?&]desktop=1\b/.test(location.search)) {
+      var viewportWidth = window.innerWidth || document.documentElement.clientWidth || screen.width || 0;
+      var isSmallScreen = viewportWidth > 0 && viewportWidth <= 820;
+      if (isMobile && isSmallScreen && !/[?&]desktop=1\b/.test(location.search)) {
         location.replace("mobile.html" + location.search + location.hash);
       }
     })();

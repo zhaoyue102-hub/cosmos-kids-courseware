@@ -42,6 +42,10 @@ body.cosmos-kids {
 
 .cosmos-kids .slide {
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   overflow: hidden;
   background:
@@ -54,6 +58,10 @@ body.cosmos-kids {
 .cosmos-kids .slide::before {
   content: "";
   position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   inset: 0;
   pointer-events: none;
   background-image:
@@ -67,6 +75,10 @@ body.cosmos-kids {
 .cosmos-kids .slide::after {
   content: "";
   position: absolute;
+  top: 18px;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
   inset: 18px;
   border: 1px solid rgba(255, 255, 255, .08);
   border-radius: 30px;
@@ -2382,4 +2394,60 @@ h1, h2, h3, p {
   .deck-footer { left: 26px; right: 26px; }
   .quick-nav { right: 18px; bottom: 18px; }
   .quick-nav-menu { width: 230px; }
+}
+
+/* ===== Lesson 4 on-screen prev/next nav ===== */
+.lesson-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%) translateY(20px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: rgba(16, 20, 52, 0.86);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.lesson-nav.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.lesson-nav .lnav-btn {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .1s ease, color .15s ease;
+}
+.lesson-nav .lnav-btn:hover {
+  background: rgba(255, 209, 102, 0.16);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.lesson-nav .lnav-btn:active { transform: translateY(1px); }
+.lesson-nav .lnav-page {
+  min-width: 110px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .04em;
 }

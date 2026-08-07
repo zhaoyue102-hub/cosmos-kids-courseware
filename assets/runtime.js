@@ -308,6 +308,20 @@
       const numEl = document.querySelector('.slide-number');
       if (numEl) { numEl.setAttribute('data-current', n+1); numEl.setAttribute('data-total', total); }
 
+      // On-screen prev/next nav for Lessons 3 & 4 (kids' lessons)
+      // Lesson 3: 0-based 14..20 (slides 15..21); Lesson 4: 0-based 21..27 (slides 22..28)
+      const navEl = document.querySelector('.lesson-nav');
+      if (navEl) {
+        let lnav = null;
+        if (n >= 14 && n <= 20) lnav = { name: '第3课', page: n - 13, total: 7 };
+        else if (n >= 21 && n <= 27) lnav = { name: '第4课', page: n - 20, total: 7 };
+        navEl.classList.toggle('show', !!lnav);
+        if (lnav) {
+          const pageLabel = navEl.querySelector('.lnav-page');
+          if (pageLabel) pageLabel.textContent = lnav.name + ' · ' + lnav.page + ' / ' + lnav.total;
+        }
+      }
+
       // notes (bottom overlay)
       const note = slides[n].querySelector('.notes, aside.notes, .speaker-notes');
       notes.innerHTML = note ? note.innerHTML : '';
@@ -346,6 +360,20 @@
         bc.postMessage({ type: 'go', idx: n });
       }
     }
+
+    /* ===== Lessons 3 & 4 on-screen prev/next nav ===== */
+    let lessonNav = document.querySelector('.lesson-nav');
+    if (!lessonNav) {
+      lessonNav = document.createElement('div');
+      lessonNav.className = 'lesson-nav';
+      lessonNav.innerHTML =
+        '<button class="lnav-btn lnav-prev" type="button" aria-label="上一页">‹ 上一页</button>' +
+        '<span class="lnav-page"></span>' +
+        '<button class="lnav-btn lnav-next" type="button" aria-label="下一页">下一页 ›</button>';
+      document.body.appendChild(lessonNav);
+    }
+    lessonNav.querySelector('.lnav-prev').addEventListener('click', function () { go(idx - 1); });
+    lessonNav.querySelector('.lnav-next').addEventListener('click', function () { go(idx + 1); });
 
     /* ===== listen for remote navigation / theme changes ===== */
     if (bc) {
