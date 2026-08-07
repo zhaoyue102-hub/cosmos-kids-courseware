@@ -1332,6 +1332,36 @@
         });
       });
     });
+
+    const slideInteractionSelector = [
+      ".quick-nav",
+      "a",
+      "button",
+      "input",
+      "textarea",
+      "select",
+      "summary",
+      "details",
+      "video",
+      "audio",
+      "[role='button']",
+      "[data-reveal-answer]",
+      "[data-sequential-quiz]",
+      ".constellation-picker"
+    ].join(",");
+
+    document.addEventListener("click", function (event) {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.altKey || event.shiftKey) return;
+      if (!event.target.closest(".slide.is-active") || event.target.closest(slideInteractionSelector)) return;
+      if (window.getSelection && window.getSelection().toString()) return;
+
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const current = slides.findIndex(function (slide) {
+        return slide.classList.contains("is-active");
+      });
+      if (current < 0 || current >= slides.length - 1) return;
+      window.location.hash = "/" + (current + 2);
+    });
   })();
 </script>
 </body>
